@@ -18,10 +18,10 @@ class JMPTimer {
   private var miliseconds = 0
   
   /// Timer UILabel.
-  var timerLabel = UILabel()
+  private var timerLabel = UILabel()
   
   /// Timer class object.
-  var timer = Timer()
+  private var timer = Timer()
   
   /// Variable that lets you know if the timer is running.
   private var timerRunning = false

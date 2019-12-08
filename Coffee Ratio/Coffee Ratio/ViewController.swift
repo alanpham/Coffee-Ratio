@@ -46,7 +46,9 @@ class ViewController: UIViewController {
     waterValues = ["18.5", "0.375"]
     coffeeValues = ["1", "1"]
     
-
+    // This stops the 'shaking' that you would normally see.
+    displayTimeLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 70, weight: UIFont.Weight.ultraLight)
+    
     timer = JMPTimer(withLabel: displayTimeLabel)
     
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
