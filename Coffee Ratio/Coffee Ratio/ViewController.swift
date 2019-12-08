@@ -88,7 +88,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func start(_ sender: AnyObject) {
-    if timer.timerRunning {
+    if timer.IsTimerRunning() {
       timer.stop()
       startButton.setTitle("Start", for: .normal)
     } else {

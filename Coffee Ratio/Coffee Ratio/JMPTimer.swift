@@ -11,15 +11,22 @@ import UIKit
 
 class JMPTimer {
 
-  /* Variables */
   private var days = 0
   private var hours = 0
   private var minutes = 0
   private var seconds = -1
   private var miliseconds = 0
+  
+  /// Timer UILabel.
   var timerLabel = UILabel()
+  
+  /// Timer class object.
   var timer = Timer()
-  var timerRunning = false
+  
+  /// Variable that lets you know if the timer is running.
+  private var timerRunning = false
+  
+  /// Holds the time as a string, and will set timerLabel's text.
   var timeAsString = "" {
     willSet {
       timerLabel.text = "\(newValue)"
@@ -33,7 +40,7 @@ class JMPTimer {
     timerLabel = label
   }
   
-  /* Methods */
+  /// Increments seconds, minutes, hours, days accordingly and updates timeAsString.
   @objc func updateTimer() {
     seconds += 1
     if seconds == 60 {
@@ -52,25 +59,40 @@ class JMPTimer {
     print(timeAsString)
   }
   
+  /// Starts timer by starting timer and setting timerRunning to true.
   func start() {
-    if !timerRunning {
-      timerRunning = true
+    if !IsTimerRunning() {
+      SetTimerRunning(true)
       let selector = #selector(JMPTimer.updateTimer)
       timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: selector, userInfo: nil, repeats: true)
       timer.fire()
     }
   }
   
+  /// Stops timer and sets timerRunning to false.
   func stop() {
-    timerRunning = false
+    SetTimerRunning(false)
     timer.invalidate()
   }
   
+  /// Clears time.
   func clear() {
     timeAsString = "00:00"
     seconds = -1
     minutes = 0
     hours = 0
     days = 0
+  }
+  
+  /// This function returns timerRunning.
+  /// - Returns: timerRunning class variable
+  func IsTimerRunning() -> Bool {
+    return timerRunning
+  }
+  
+  /// This function sets timerRunning
+  /// - Parameter TimerIsRunning: What to set timerRunning to
+  func SetTimerRunning(_ TimerIsRunning: Bool) {
+    timerRunning = TimerIsRunning
   }
 }
