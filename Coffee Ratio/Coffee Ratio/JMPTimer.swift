@@ -12,11 +12,11 @@ import UIKit
 class JMPTimer {
 
   /* Variables */
-  var days = 0
-  var hours = 0
-  var minutes = 0
-  var seconds = -1
-  var miliseconds = 0
+  private var days = 0
+  private var hours = 0
+  private var minutes = 0
+  private var seconds = -1
+  private var miliseconds = 0
   var timerLabel = UILabel()
   var timer = Timer()
   var timerRunning = false
@@ -51,10 +51,7 @@ class JMPTimer {
     timeAsString = String(format: "%02d:%02d", minutes, seconds)
     print(timeAsString)
   }
-}
-
-// MARK: - Basic Timer Controls
-extension JMPTimer {
+  
   func start() {
     if !timerRunning {
       timerRunning = true
